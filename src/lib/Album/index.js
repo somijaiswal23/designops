@@ -71,6 +71,8 @@ const Album = ({
   editButtonClasses,
   viewAction,
   editAction,
+  cardHeading,
+  cardSubHeading,
   }) => {
   const classes = useStyles();
 
@@ -98,7 +100,7 @@ const Album = ({
         </div>
         <Container className={classNames(classes.cardGrid, gridContainerClasses)} maxWidth="md">
           <Grid container spacing={4} className={innerGridClasses}>
-            {cards.map((card) => (
+            {cards.map((card, index) => (
               <Grid item key={card} xs={12} sm={6} md={4} className={gridClasses}>
                 <Card className={classNames(classes.card, cardClasses)}>
                   <CardMedia
@@ -108,10 +110,10 @@ const Album = ({
                   />
                   <CardContent className={classNames(classes.cardContent, cardContentClasses)}>
                     <Typography gutterBottom variant="h5" component="h2" className={headingClasses}>
-                      Heading
+                      {cardHeading ? cardHeading[index] : 'Heading'}
                     </Typography>
                     <Typography className={contentClasses}>
-                      This is a media card. You can use this section to describe the content.
+                      {cardSubHeading ? cardSubHeading[index] : 'This is a media card. You can use this section to describe the content.'}
                     </Typography>
                   </CardContent>
                   <CardActions className={cardActionClasses}>
