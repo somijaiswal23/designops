@@ -12,29 +12,9 @@ var _AppBar = require('@material-ui/core/AppBar');
 
 var _AppBar2 = _interopRequireDefault(_AppBar);
 
-var _Button = require('@material-ui/core/Button');
-
-var _Button2 = _interopRequireDefault(_Button);
-
 var _PhotoCamera = require('@material-ui/icons/PhotoCamera');
 
 var _PhotoCamera2 = _interopRequireDefault(_PhotoCamera);
-
-var _Card = require('@material-ui/core/Card');
-
-var _Card2 = _interopRequireDefault(_Card);
-
-var _CardActions = require('@material-ui/core/CardActions');
-
-var _CardActions2 = _interopRequireDefault(_CardActions);
-
-var _CardContent = require('@material-ui/core/CardContent');
-
-var _CardContent2 = _interopRequireDefault(_CardContent);
-
-var _CardMedia = require('@material-ui/core/CardMedia');
-
-var _CardMedia2 = _interopRequireDefault(_CardMedia);
 
 var _CssBaseline = require('@material-ui/core/CssBaseline');
 
@@ -57,6 +37,10 @@ var _styles = require('@material-ui/core/styles');
 var _Container = require('@material-ui/core/Container');
 
 var _Container2 = _interopRequireDefault(_Container);
+
+var _CustomCard = require('../CustomCard');
+
+var _CustomCard2 = _interopRequireDefault(_CustomCard);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -98,33 +82,35 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
 
 var cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-var Album = function Album(_ref) {
-  var Heading = _ref.Heading,
-      SubContent = _ref.SubContent,
-      appBarClasses = _ref.appBarClasses,
-      toolBarClasses = _ref.toolBarClasses,
-      cameraIconClasses = _ref.cameraIconClasses,
-      typographyClasses = _ref.typographyClasses,
-      divClasses = _ref.divClasses,
-      containerClasses = _ref.containerClasses,
-      headingClasses = _ref.headingClasses,
-      contentClasses = _ref.contentClasses,
-      gridContainerClasses = _ref.gridContainerClasses,
-      innerGridClasses = _ref.innerGridClasses,
-      gridClasses = _ref.gridClasses,
-      cardClasses = _ref.cardClasses,
-      cardMediaClasses = _ref.cardMediaClasses,
-      cardContentClasses = _ref.cardContentClasses,
-      cardActionClasses = _ref.cardActionClasses,
-      viewButtonClasses = _ref.viewButtonClasses,
-      editButtonClasses = _ref.editButtonClasses,
-      viewAction = _ref.viewAction,
-      editAction = _ref.editAction,
-      cardHeading = _ref.cardHeading,
-      cardSubHeading = _ref.cardSubHeading;
+var Album = function Album(props) {
+  var Heading = props.Heading,
+      SubContent = props.SubContent,
+      appBarClasses = props.appBarClasses,
+      toolBarClasses = props.toolBarClasses,
+      cameraIconClasses = props.cameraIconClasses,
+      typographyClasses = props.typographyClasses,
+      divClasses = props.divClasses,
+      containerClasses = props.containerClasses,
+      headingClasses = props.headingClasses,
+      contentClasses = props.contentClasses,
+      gridContainerClasses = props.gridContainerClasses,
+      innerGridClasses = props.innerGridClasses,
+      gridClasses = props.gridClasses,
+      cardClasses = props.cardClasses,
+      cardMediaClasses = props.cardMediaClasses,
+      cardContentClasses = props.cardContentClasses,
+      cardActionClasses = props.cardActionClasses,
+      viewButtonClasses = props.viewButtonClasses,
+      editButtonClasses = props.editButtonClasses,
+      viewAction = props.viewAction,
+      editAction = props.editAction,
+      cardHeading = props.cardHeading,
+      cardSubHeading = props.cardSubHeading,
+      img = props.img,
+      numberOfCards = props.numberOfCards;
 
   var classes = useStyles();
-
+  var cardArray = numberOfCards ? numberOfCards : cards;
   return _react2.default.createElement(
     'div',
     null,
@@ -170,47 +156,24 @@ var Album = function Album(_ref) {
         _react2.default.createElement(
           _Grid2.default,
           { container: true, spacing: 4, className: innerGridClasses },
-          cards.map(function (card, index) {
+          cardArray.map(function (card, index) {
             return _react2.default.createElement(
               _Grid2.default,
               { item: true, key: card, xs: 12, sm: 6, md: 4, className: gridClasses },
-              _react2.default.createElement(
-                _Card2.default,
-                { className: classNames(classes.card, cardClasses) },
-                _react2.default.createElement(_CardMedia2.default, {
-                  className: classNames(classes.cardMedia, cardMediaClasses),
-                  image: 'https://source.unsplash.com/random',
-                  title: 'Image title'
-                }),
-                _react2.default.createElement(
-                  _CardContent2.default,
-                  { className: classNames(classes.cardContent, cardContentClasses) },
-                  _react2.default.createElement(
-                    _Typography2.default,
-                    { gutterBottom: true, variant: 'h5', component: 'h2', className: headingClasses },
-                    cardHeading ? cardHeading[index] : 'Heading'
-                  ),
-                  _react2.default.createElement(
-                    _Typography2.default,
-                    { className: contentClasses },
-                    cardSubHeading ? cardSubHeading[index] : 'This is a media card. You can use this section to describe the content.'
-                  )
-                ),
-                _react2.default.createElement(
-                  _CardActions2.default,
-                  { className: cardActionClasses },
-                  _react2.default.createElement(
-                    _Button2.default,
-                    { size: 'small', color: 'primary', className: viewButtonClasses, onClick: viewAction },
-                    'View'
-                  ),
-                  _react2.default.createElement(
-                    _Button2.default,
-                    { size: 'small', color: 'primary', className: editButtonClasses, onClick: editAction },
-                    'Edit'
-                  )
-                )
-              )
+              _react2.default.createElement(_CustomCard2.default, { headingClasses: headingClasses,
+                contentClasses: contentClasses,
+                cardClasses: cardClasses,
+                cardMediaClasses: cardMediaClasses,
+                cardContentClasses: cardContentClasses,
+                cardActionClasses: cardActionClasses,
+                viewButtonClasses: viewButtonClasses,
+                editButtonClasses: editButtonClasses,
+                viewAction: viewAction,
+                editAction: editAction,
+                cardHeading: cardHeading,
+                cardSubHeading: cardSubHeading,
+                id: index,
+                img: img })
             );
           })
         )

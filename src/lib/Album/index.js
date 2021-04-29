@@ -1,17 +1,13 @@
 import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import Button from '@material-ui/core/Button';
 import CameraIcon from '@material-ui/icons/PhotoCamera';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import CustomCard from '../CustomCard';
 
 const classNames = require('classnames');
 
@@ -49,33 +45,36 @@ const useStyles = makeStyles((theme) => ({
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-const Album = ({ 
-  Heading,
-  SubContent,
-  appBarClasses,
-  toolBarClasses,
-  cameraIconClasses,
-  typographyClasses,
-  divClasses,
-  containerClasses,
-  headingClasses,
-  contentClasses,
-  gridContainerClasses,
-  innerGridClasses,
-  gridClasses,
-  cardClasses,
-  cardMediaClasses,
-  cardContentClasses,
-  cardActionClasses,
-  viewButtonClasses,
-  editButtonClasses,
-  viewAction,
-  editAction,
-  cardHeading,
-  cardSubHeading,
-  }) => {
+const Album = (props) => {
+  const { 
+    Heading,
+    SubContent,
+    appBarClasses,
+    toolBarClasses,
+    cameraIconClasses,
+    typographyClasses,
+    divClasses,
+    containerClasses,
+    headingClasses,
+    contentClasses,
+    gridContainerClasses,
+    innerGridClasses,
+    gridClasses,
+    cardClasses,
+    cardMediaClasses,
+    cardContentClasses,
+    cardActionClasses,
+    viewButtonClasses,
+    editButtonClasses,
+    viewAction,
+    editAction,
+    cardHeading,
+    cardSubHeading,
+    img,
+    numberOfCards,
+    } = props
   const classes = useStyles();
-
+  const cardArray = numberOfCards ? numberOfCards : cards;
   return (
     <div>
       <CssBaseline />
@@ -100,31 +99,22 @@ const Album = ({
         </div>
         <Container className={classNames(classes.cardGrid, gridContainerClasses)} maxWidth="md">
           <Grid container spacing={4} className={innerGridClasses}>
-            {cards.map((card, index) => (
+            {cardArray.map((card, index) => (
               <Grid item key={card} xs={12} sm={6} md={4} className={gridClasses}>
-                <Card className={classNames(classes.card, cardClasses)}>
-                  <CardMedia
-                    className={classNames(classes.cardMedia, cardMediaClasses)}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
-                  />
-                  <CardContent className={classNames(classes.cardContent, cardContentClasses)}>
-                    <Typography gutterBottom variant="h5" component="h2" className={headingClasses}>
-                      {cardHeading ? cardHeading[index] : 'Heading'}
-                    </Typography>
-                    <Typography className={contentClasses}>
-                      {cardSubHeading ? cardSubHeading[index] : 'This is a media card. You can use this section to describe the content.'}
-                    </Typography>
-                  </CardContent>
-                  <CardActions className={cardActionClasses}>
-                    <Button size="small" color="primary" className={viewButtonClasses} onClick={viewAction}>
-                      View
-                    </Button>
-                    <Button size="small" color="primary" className={editButtonClasses} onClick={editAction}>
-                      Edit
-                    </Button>
-                  </CardActions>
-                </Card>
+                <CustomCard headingClasses={headingClasses}
+                      contentClasses={contentClasses}
+                      cardClasses={cardClasses}
+                      cardMediaClasses={cardMediaClasses}
+                      cardContentClasses={cardContentClasses}
+                      cardActionClasses={cardActionClasses}
+                      viewButtonClasses={viewButtonClasses}
+                      editButtonClasses={editButtonClasses}
+                      viewAction={viewAction}
+                      editAction={editAction}
+                      cardHeading={cardHeading}
+                      cardSubHeading={cardSubHeading}
+                      id={index}
+                      img={img}/>
               </Grid>
             ))}
           </Grid>
