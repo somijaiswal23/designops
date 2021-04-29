@@ -74,7 +74,7 @@ const CustomCard = (props) => {
                 </Typography>
             </CardContent>
             <CardActions className={cardActionClasses}>
-            <Button size="small" color="primary" className={viewButtonClasses} onClick={viewAction}>
+            <Button size="small" color="primary" className={viewButtonClasses} onClick={() => viewAction(cardHeading, cardSubHeading)}>
                 View
             </Button>
             <Button size="small" color="primary" className={editButtonClasses} onClick={editAction}>

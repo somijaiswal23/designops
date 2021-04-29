@@ -115,7 +115,9 @@ var CustomCard = function CustomCard(props) {
       { className: cardActionClasses },
       _react2.default.createElement(
         _Button2.default,
-        { size: 'small', color: 'primary', className: viewButtonClasses, onClick: viewAction },
+        { size: 'small', color: 'primary', className: viewButtonClasses, onClick: function onClick() {
+            return viewAction(cardHeading, cardSubHeading);
+          } },
         'View'
       ),
       _react2.default.createElement(
