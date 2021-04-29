@@ -170,9 +170,8 @@ var Album = function Album(props) {
                 editButtonClasses: editButtonClasses,
                 viewAction: viewAction,
                 editAction: editAction,
-                cardHeading: cardHeading,
-                cardSubHeading: cardSubHeading,
-                id: index,
+                cardHeading: cardHeading[index],
+                cardSubHeading: cardSubHeading[index],
                 img: img })
             );
           })

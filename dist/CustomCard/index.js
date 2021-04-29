@@ -73,8 +73,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
 });
 
 var CustomCard = function CustomCard(props) {
-  var id = props.id,
-      headingClasses = props.headingClasses,
+  var headingClasses = props.headingClasses,
       contentClasses = props.contentClasses,
       cardClasses = props.cardClasses,
       cardMediaClasses = props.cardMediaClasses,
@@ -103,12 +102,12 @@ var CustomCard = function CustomCard(props) {
       _react2.default.createElement(
         _Typography2.default,
         { gutterBottom: true, variant: 'h5', component: 'h2', className: headingClasses },
-        cardHeading ? id ? cardHeading[id] : cardHeading : 'Heading'
+        cardHeading ? cardHeading : 'Heading'
       ),
       _react2.default.createElement(
         _Typography2.default,
         { className: contentClasses },
-        cardSubHeading ? id ? cardSubHeading[id] : cardSubHeading : 'This is a media card. You can use this section to describe the content.'
+        cardSubHeading ? cardSubHeading : 'This is a media card. You can use this section to describe the content.'
       )
     ),
     _react2.default.createElement(

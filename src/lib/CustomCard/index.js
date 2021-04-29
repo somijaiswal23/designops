@@ -43,7 +43,6 @@ const useStyles = makeStyles((theme) => ({
 
 const CustomCard = (props) => {
   const {  
-    id, 
     headingClasses,
     contentClasses,
     cardClasses,
@@ -68,10 +67,10 @@ const CustomCard = (props) => {
             title="Image title"/>
             <CardContent className={classNames(classes.cardContent, cardContentClasses)}>
                 <Typography gutterBottom variant="h5" component="h2" className={headingClasses}>
-                    {cardHeading ? id ? cardHeading[id] : cardHeading : 'Heading'}
+                    {cardHeading ? cardHeading : 'Heading'}
                 </Typography>
                 <Typography className={contentClasses}>
-                    {cardSubHeading ? id ? cardSubHeading[id] : cardSubHeading : 'This is a media card. You can use this section to describe the content.'}
+                    {cardSubHeading ? cardSubHeading : 'This is a media card. You can use this section to describe the content.'}
                 </Typography>
             </CardContent>
             <CardActions className={cardActionClasses}>
