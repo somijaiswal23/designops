@@ -43,7 +43,52 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+const cards = [
+  {
+      id:1,
+      heading: 'Heading 1',
+      subheading:'I am Card 1'
+  },
+  {
+      id:2,
+      heading: 'Heading 2',
+      subheading:'I am Card 2'
+  },
+  {
+      id:3,
+      heading: 'Heading 3',
+      subheading:'I am Card 3'
+  },
+  {
+      id:4,
+      heading: 'Heading 4',
+      subheading:'I am Card 4'
+  },
+  {
+      id:5,
+      heading: 'Heading 5',
+      subheading:'I am Card 5'
+  },
+  {
+      id:6,
+      heading: 'Heading 6',
+      subheading:'I am Card 6'
+  },
+  {
+    id:7,
+    heading: 'Heading 7',
+    subheading:'I am Card 7'
+  },
+  {
+      id:8,
+      heading: 'Heading 8',
+      subheading:'I am Card 8'
+  },
+  {
+      id:9,
+      heading: 'Heading 9',
+      subheading:'I am Card 9'
+  }];
 
 const Album = (props) => {
   const { 
@@ -68,13 +113,11 @@ const Album = (props) => {
     editButtonClasses,
     viewAction,
     editAction,
-    cardHeading,
-    cardSubHeading,
     img,
-    numberOfCards,
+    cardsData,
     } = props
   const classes = useStyles();
-  const cardArray = numberOfCards ? numberOfCards : cards;
+  const cardArray = cardsData ? cardsData : cards;
   return (
     <div>
       <CssBaseline />
@@ -100,7 +143,7 @@ const Album = (props) => {
         <Container className={classNames(classes.cardGrid, gridContainerClasses)} maxWidth="md">
           <Grid container spacing={4} className={innerGridClasses}>
             {cardArray.map((card, index) => (
-              <Grid item key={card} xs={12} sm={6} md={4} className={gridClasses}>
+              <Grid item key={card.id} xs={12} sm={6} md={4} className={gridClasses}>
                 <CustomCard headingClasses={headingClasses}
                       contentClasses={contentClasses}
                       cardClasses={cardClasses}
@@ -111,8 +154,8 @@ const Album = (props) => {
                       editButtonClasses={editButtonClasses}
                       viewAction={viewAction}
                       editAction={editAction}
-                      cardHeading={cardHeading[index]}
-                      cardSubHeading={cardSubHeading[index]}
+                      cardHeading={card.heading}
+                      cardSubHeading={card.subheading}
                       img={img}/>
               </Grid>
             ))}

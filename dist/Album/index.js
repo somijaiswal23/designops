@@ -80,7 +80,43 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
   };
 });
 
-var cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+var cards = [{
+  id: 1,
+  heading: 'Heading 1',
+  subheading: 'I am Card 1'
+}, {
+  id: 2,
+  heading: 'Heading 2',
+  subheading: 'I am Card 2'
+}, {
+  id: 3,
+  heading: 'Heading 3',
+  subheading: 'I am Card 3'
+}, {
+  id: 4,
+  heading: 'Heading 4',
+  subheading: 'I am Card 4'
+}, {
+  id: 5,
+  heading: 'Heading 5',
+  subheading: 'I am Card 5'
+}, {
+  id: 6,
+  heading: 'Heading 6',
+  subheading: 'I am Card 6'
+}, {
+  id: 7,
+  heading: 'Heading 7',
+  subheading: 'I am Card 7'
+}, {
+  id: 8,
+  heading: 'Heading 8',
+  subheading: 'I am Card 8'
+}, {
+  id: 9,
+  heading: 'Heading 9',
+  subheading: 'I am Card 9'
+}];
 
 var Album = function Album(props) {
   var Heading = props.Heading,
@@ -104,13 +140,11 @@ var Album = function Album(props) {
       editButtonClasses = props.editButtonClasses,
       viewAction = props.viewAction,
       editAction = props.editAction,
-      cardHeading = props.cardHeading,
-      cardSubHeading = props.cardSubHeading,
       img = props.img,
-      numberOfCards = props.numberOfCards;
+      cardsData = props.cardsData;
 
   var classes = useStyles();
-  var cardArray = numberOfCards ? numberOfCards : cards;
+  var cardArray = cardsData ? cardsData : cards;
   return _react2.default.createElement(
     'div',
     null,
@@ -159,7 +193,7 @@ var Album = function Album(props) {
           cardArray.map(function (card, index) {
             return _react2.default.createElement(
               _Grid2.default,
-              { item: true, key: card, xs: 12, sm: 6, md: 4, className: gridClasses },
+              { item: true, key: card.id, xs: 12, sm: 6, md: 4, className: gridClasses },
               _react2.default.createElement(_CustomCard2.default, { headingClasses: headingClasses,
                 contentClasses: contentClasses,
                 cardClasses: cardClasses,
@@ -170,8 +204,8 @@ var Album = function Album(props) {
                 editButtonClasses: editButtonClasses,
                 viewAction: viewAction,
                 editAction: editAction,
-                cardHeading: cardHeading[index],
-                cardSubHeading: cardSubHeading[index],
+                cardHeading: card.heading,
+                cardSubHeading: card.subheading,
                 img: img })
             );
           })
