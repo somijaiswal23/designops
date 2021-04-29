@@ -119,7 +119,9 @@ var Album = function Album(_ref) {
       viewButtonClasses = _ref.viewButtonClasses,
       editButtonClasses = _ref.editButtonClasses,
       viewAction = _ref.viewAction,
-      editAction = _ref.editAction;
+      editAction = _ref.editAction,
+      cardHeading = _ref.cardHeading,
+      cardSubHeading = _ref.cardSubHeading;
 
   var classes = useStyles();
 
@@ -168,7 +170,7 @@ var Album = function Album(_ref) {
         _react2.default.createElement(
           _Grid2.default,
           { container: true, spacing: 4, className: innerGridClasses },
-          cards.map(function (card) {
+          cards.map(function (card, index) {
             return _react2.default.createElement(
               _Grid2.default,
               { item: true, key: card, xs: 12, sm: 6, md: 4, className: gridClasses },
@@ -186,12 +188,12 @@ var Album = function Album(_ref) {
                   _react2.default.createElement(
                     _Typography2.default,
                     { gutterBottom: true, variant: 'h5', component: 'h2', className: headingClasses },
-                    'Heading'
+                    cardHeading ? cardHeading[index] : 'Heading'
                   ),
                   _react2.default.createElement(
                     _Typography2.default,
                     { className: contentClasses },
-                    'This is a media card. You can use this section to describe the content.'
+                    cardSubHeading ? cardSubHeading[index] : 'This is a media card. You can use this section to describe the content.'
                   )
                 ),
                 _react2.default.createElement(
