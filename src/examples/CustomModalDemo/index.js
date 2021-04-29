@@ -1,10 +1,10 @@
 /*****Import use for example purpose only */
 import React from "react";
+import './index.css'
 import {Button,Grid,Typography, Container, TextField, Box} from '@material-ui/core';
 /*****Import use for example purpose only */
-
-
 import { CustomModal } from "../../lib";
+
 const CustomModalDemo = () => {
     const [openModal1, setOpenModalOne] = React.useState(false);
     const [openModal2, setOpenModalTwo] = React.useState(false);
@@ -41,7 +41,8 @@ const CustomModalDemo = () => {
      size="xs"
      handleSuccess={handleSuccessOne} 
      handleClose={handleCloseOne}
-     title="Are you sure your want to exit?">
+     title="Are you sure your want to exit?"
+     buttonClasses= "buttonCss">
     </CustomModal>
 
 

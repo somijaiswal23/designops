@@ -118,7 +118,12 @@ var CustomModal = function CustomModal(_ref) {
       _ref$hideLetfBtn = _ref.hideLetfBtn,
       hideLetfBtn = _ref$hideLetfBtn === undefined ? false : _ref$hideLetfBtn,
       _ref$hideRightBtn = _ref.hideRightBtn,
-      hideRightBtn = _ref$hideRightBtn === undefined ? false : _ref$hideRightBtn;
+      hideRightBtn = _ref$hideRightBtn === undefined ? false : _ref$hideRightBtn,
+      dialogClasses = _ref.dialogClasses,
+      dialogTitleClasses = _ref.dialogTitleClasses,
+      dialogContentClasses = _ref.dialogContentClasses,
+      dialogActionClasses = _ref.dialogActionClasses,
+      buttonClasses = _ref.buttonClasses;
 
 
   return _react2.default.createElement(
@@ -127,28 +132,29 @@ var CustomModal = function CustomModal(_ref) {
       maxWidth: size,
       onClose: handleClose,
       open: isOpen,
-      'aria-labelledby': title },
+      'aria-labelledby': title,
+      className: dialogClasses },
     _react2.default.createElement(
       DialogTitle,
-      { id: title, onClose: handleClose },
+      { classes: dialogTitleClasses, id: title, onClose: handleClose },
       title
     ),
     children && _react2.default.createElement(
       DialogContent,
-      { dividers: true },
+      { className: dialogContentClasses, dividers: true },
       children
     ),
     _react2.default.createElement(
       DialogActions,
-      null,
+      { className: dialogActionClasses },
       !hideLetfBtn && _react2.default.createElement(
         _core.Button,
-        { onClick: handleClose, color: 'secondary' },
+        { className: buttonClasses, onClick: handleClose, color: 'secondary' },
         leftBtnText
       ),
       !hideRightBtn && _react2.default.createElement(
         _core.Button,
-        { onClick: handleSuccess, autoFocus: true, color: 'primary' },
+        { className: buttonClasses, onClick: handleSuccess, autoFocus: true, color: 'primary' },
         rightBtnText
       )
     )

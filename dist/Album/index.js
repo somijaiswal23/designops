@@ -60,6 +60,8 @@ var _Container2 = _interopRequireDefault(_Container);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var classNames = require('classnames');
+
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
     icon: {
@@ -98,7 +100,26 @@ var cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 var Album = function Album(_ref) {
   var Heading = _ref.Heading,
-      SubContent = _ref.SubContent;
+      SubContent = _ref.SubContent,
+      appBarClasses = _ref.appBarClasses,
+      toolBarClasses = _ref.toolBarClasses,
+      cameraIconClasses = _ref.cameraIconClasses,
+      typographyClasses = _ref.typographyClasses,
+      divClasses = _ref.divClasses,
+      containerClasses = _ref.containerClasses,
+      headingClasses = _ref.headingClasses,
+      contentClasses = _ref.contentClasses,
+      gridContainerClasses = _ref.gridContainerClasses,
+      innerGridClasses = _ref.innerGridClasses,
+      gridClasses = _ref.gridClasses,
+      cardClasses = _ref.cardClasses,
+      cardMediaClasses = _ref.cardMediaClasses,
+      cardContentClasses = _ref.cardContentClasses,
+      cardActionClasses = _ref.cardActionClasses,
+      viewButtonClasses = _ref.viewButtonClasses,
+      editButtonClasses = _ref.editButtonClasses,
+      viewAction = _ref.viewAction,
+      editAction = _ref.editAction;
 
   var classes = useStyles();
 
@@ -108,14 +129,14 @@ var Album = function Album(_ref) {
     _react2.default.createElement(_CssBaseline2.default, null),
     _react2.default.createElement(
       _AppBar2.default,
-      { position: 'relative' },
+      { position: 'relative', className: appBarClasses },
       _react2.default.createElement(
         _Toolbar2.default,
-        null,
-        _react2.default.createElement(_PhotoCamera2.default, { className: classes.icon }),
+        { className: toolBarClasses },
+        _react2.default.createElement(_PhotoCamera2.default, { className: classNames(classes.icon, cameraIconClasses) }),
         _react2.default.createElement(
           _Typography2.default,
-          { variant: 'h6', color: 'inherit', noWrap: true },
+          { variant: 'h6', color: 'inherit', noWrap: true, className: typographyClasses },
           'Album layout'
         )
       )
@@ -125,65 +146,65 @@ var Album = function Album(_ref) {
       null,
       _react2.default.createElement(
         'div',
-        { className: classes.heroContent },
+        { className: classNames(classes.heroContent, divClasses) },
         _react2.default.createElement(
           _Container2.default,
-          { maxWidth: 'sm' },
+          { maxWidth: 'sm', className: containerClasses },
           _react2.default.createElement(
             _Typography2.default,
-            { component: 'h1', variant: 'h2', align: 'center', color: 'textPrimary', gutterBottom: true },
+            { component: 'h1', variant: 'h2', align: 'center', color: 'textPrimary', gutterBottom: true, className: headingClasses },
             Heading
           ),
           _react2.default.createElement(
             _Typography2.default,
-            { variant: 'h5', align: 'center', color: 'textSecondary', paragraph: true },
+            { variant: 'h5', align: 'center', color: 'textSecondary', paragraph: true, className: contentClasses },
             SubContent
           )
         )
       ),
       _react2.default.createElement(
         _Container2.default,
-        { className: classes.cardGrid, maxWidth: 'md' },
+        { className: classNames(classes.cardGrid, gridContainerClasses), maxWidth: 'md' },
         _react2.default.createElement(
           _Grid2.default,
-          { container: true, spacing: 4 },
+          { container: true, spacing: 4, className: innerGridClasses },
           cards.map(function (card) {
             return _react2.default.createElement(
               _Grid2.default,
-              { item: true, key: card, xs: 12, sm: 6, md: 4 },
+              { item: true, key: card, xs: 12, sm: 6, md: 4, className: gridClasses },
               _react2.default.createElement(
                 _Card2.default,
-                { className: classes.card },
+                { className: classNames(classes.card, cardClasses) },
                 _react2.default.createElement(_CardMedia2.default, {
-                  className: classes.cardMedia,
+                  className: classNames(classes.cardMedia, cardMediaClasses),
                   image: 'https://source.unsplash.com/random',
                   title: 'Image title'
                 }),
                 _react2.default.createElement(
                   _CardContent2.default,
-                  { className: classes.cardContent },
+                  { className: classNames(classes.cardContent, cardContentClasses) },
                   _react2.default.createElement(
                     _Typography2.default,
-                    { gutterBottom: true, variant: 'h5', component: 'h2' },
+                    { gutterBottom: true, variant: 'h5', component: 'h2', className: headingClasses },
                     'Heading'
                   ),
                   _react2.default.createElement(
                     _Typography2.default,
-                    null,
+                    { className: contentClasses },
                     'This is a media card. You can use this section to describe the content.'
                   )
                 ),
                 _react2.default.createElement(
                   _CardActions2.default,
-                  null,
+                  { className: cardActionClasses },
                   _react2.default.createElement(
                     _Button2.default,
-                    { size: 'small', color: 'primary' },
+                    { size: 'small', color: 'primary', className: viewButtonClasses, onClick: viewAction },
                     'View'
                   ),
                   _react2.default.createElement(
                     _Button2.default,
-                    { size: 'small', color: 'primary' },
+                    { size: 'small', color: 'primary', className: editButtonClasses, onClick: editAction },
                     'Edit'
                   )
                 )

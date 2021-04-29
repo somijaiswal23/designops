@@ -51,24 +51,40 @@ const DialogContent = withStyles((theme) => ({
 /******
  * size can be 'lg''md''sm''xl''xs'false 
  */
-const CustomModal = ({isOpen, size='md',handleClose, title, handleSuccess, children, 
-    leftBtnText='Cancel', rightBtnText='Ok', hideLetfBtn=false, hideRightBtn=false}) => {
+const CustomModal = ({
+  isOpen,
+  size='md',
+  handleClose, 
+  title, 
+  handleSuccess, 
+  children, 
+  leftBtnText='Cancel',
+  rightBtnText='Ok',
+  hideLetfBtn=false,
+  hideRightBtn=false,
+  dialogClasses,
+  dialogTitleClasses,
+  dialogContentClasses,
+  dialogActionClasses,
+  buttonClasses,
+}) => {
 
     return (
       <Dialog fullWidth
        maxWidth={size} 
        onClose={handleClose}
        open={isOpen}
-       aria-labelledby={title}>
-        <DialogTitle id={title} onClose={handleClose}>{title}</DialogTitle>
-            {children && <DialogContent dividers>
+       aria-labelledby={title}
+       className={dialogClasses}>
+        <DialogTitle classes={dialogTitleClasses} id={title} onClose={handleClose}>{title}</DialogTitle>
+            {children && <DialogContent className={dialogContentClasses} dividers>
                 {children}
             </DialogContent>}
-            <DialogActions>
-                {!hideLetfBtn && <Button onClick={handleClose} color="secondary">
+            <DialogActions className={dialogActionClasses}>
+                {!hideLetfBtn && <Button className={buttonClasses} onClick={handleClose} color="secondary">
                     {leftBtnText}
                 </Button>}
-                {!hideRightBtn && <Button onClick={handleSuccess} autoFocus color="primary">
+                {!hideRightBtn && <Button className={buttonClasses} onClick={handleSuccess} autoFocus color="primary">
                     {rightBtnText}
                 </Button>}
             </DialogActions>
