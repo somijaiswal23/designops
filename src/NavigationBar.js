@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import {NavLink} from "react-router-dom";
 import {Drawer, MenuList, MenuItem, ListItemText, Toolbar} from '@material-ui/core';
@@ -27,12 +27,18 @@ const useStyles = makeStyles((theme) => ({
   }));
 
 const NavigationBar = (props) => {
-    
+    const [routes, setRoutes] = React.useState(ROUTES)
+    const {pathname} = window?.location
+    useEffect(()=>{
+      onSelection(pathname)
+    },[pathname])
+    const onSelection=(pathname)=>{
+      const updatedRoutes = ROUTES.map(item=>{
+        return item.path === pathname ? {...item, active:true}:{...item, active:false}
+      })
+      setRoutes(updatedRoutes)
+    }
     const classes = useStyles();
-    const activeRoute = (routeName) => {
-        console.log(routeName, window.location.pathname)
-        return window.location.pathname === routeName ? true : false;
-      }
     return (
         <Drawer
           className={classes.drawer}
@@ -44,10 +50,10 @@ const NavigationBar = (props) => {
           <Toolbar />
           <div className={classes.drawerContainer}>
             <MenuList>
-            {ROUTES.map((prop, key) => {
+            {routes.map((prop, key) => {
               return (
-                <NavLink to={prop.path} style={{ textDecoration: 'none' }} key={key}>
-                  <MenuItem selected={activeRoute(prop.path)}>
+                <NavLink to={prop.path} style={{ textDecoration: 'none' }} key={key} onClick={()=>onSelection(prop.path)}>
+                  <MenuItem selected={prop.active}>
                     <ListItemText primary={prop.name} className={classes.listItemText}/>
                   </MenuItem>
                 </NavLink>

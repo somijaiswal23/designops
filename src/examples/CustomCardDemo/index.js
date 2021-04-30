@@ -50,10 +50,10 @@ const CustomCardDemo = () => {
   return (
     <div>
       {/* component 1 */}
-      <div class='container'>    
+      <div className='container'>    
         {cardRows(1,6)}
       </div>
-      <div class='container'>
+      <div className='container'>
        {cardRows(6,11)}
       </div>
       {/* component 2*/}
