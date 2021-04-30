@@ -8,9 +8,14 @@
     {
         path:'/stickyfooter',
         name:'Sticky Footer',
-    },{
+    },
+    {
         path:'/modal',
         name:'Modal',
+    },
+    {
+        path:'/card',
+        name:'Cards',
     }
 ]
 

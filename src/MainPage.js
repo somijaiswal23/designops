@@ -2,10 +2,11 @@ import React from 'react';
 import {Switch,Route} from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import {AppBar, CssBaseline, Toolbar, Typography} from '@material-ui/core';
-import {SignIn, StickyFooter} from './lib'
-
+import {SignIn, StickyFooter} from './lib';
 import NavigationBar from './NavigationBar'
-import {CustomModalDemo} from './examples';
+import {CustomModalDemo, CustomCardDemo} from './examples';
+import './index.css';
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -27,10 +28,15 @@ const MainPage = (props) =>{
       <div className={classes.root}>
         <CssBaseline />
         <AppBar position="fixed" className={classes.appBar}>
-          <Toolbar>
-            <Typography variant="h6" noWrap>
-              RXP Design Library
-            </Typography>
+          <Toolbar className="toolContainer">
+            <div className="toolBar">
+                <img 
+                    src="https://assets-global.website-files.com/5eb0a0358a376a75f540e0ea/605bc8ff5dd0b052c46e6d37_RXP%20group-Endorsed_svg_White.svg" 
+                    width="150" alt="RXP Group"/> 
+                <Typography variant="h6" noWrap className="toolText">
+                    RXP Design Library
+                </Typography>
+            </div>     
           </Toolbar>
         </AppBar>
         <NavigationBar {...props}/>
@@ -40,6 +46,7 @@ const MainPage = (props) =>{
             <Route path='/' exact component={SignIn} {...props}/>
             <Route path='/stickyfooter' component={StickyFooter} {...props}/>
             <Route path='/modal' component={CustomModalDemo} {...props}/>
+            <Route path='/card' component={CustomCardDemo} {...props}/>
           </Switch>
         </main>
       </div>

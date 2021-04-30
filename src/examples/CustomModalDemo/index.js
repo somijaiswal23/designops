@@ -102,9 +102,9 @@ const CustomModalDemo = () => {
     </CustomModal>
     </Grid>
     </Box>
-    <div margin="50px">
+    {/* <div margin="50px">
       <iframe src="https://stackblitz.com/edit/react-nrfif2" height="700px" width="100%"></iframe>
-    </div>
+    </div> */}
     </Container>
 
     

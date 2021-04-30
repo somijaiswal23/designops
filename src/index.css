@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.toolContainer{
+  background-color: #0a2243;
+}
+
+.toolBar {
+  display: flex;
+  width: 100%;
+}
+
+.toolText {
+  padding-left:50%;
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+}

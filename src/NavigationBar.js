@@ -19,11 +19,18 @@ const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
       padding: theme.spacing(3),
     },
+    listItemText : {
+        color: '#0a2243',
+        fontFamily: 'Montserrat, sans-serif',
+        fontWeight: 500,
+    },
   }));
 
-const NavigationBar = (props) =>{
+const NavigationBar = (props) => {
+    
     const classes = useStyles();
     const activeRoute = (routeName) => {
+        console.log(routeName, window.location.pathname)
         return window.location.pathname === routeName ? true : false;
       }
     return (
@@ -41,7 +48,7 @@ const NavigationBar = (props) =>{
               return (
                 <NavLink to={prop.path} style={{ textDecoration: 'none' }} key={key}>
                   <MenuItem selected={activeRoute(prop.path)}>
-                    <ListItemText primary={prop.name} />
+                    <ListItemText primary={prop.name} className={classes.listItemText}/>
                   </MenuItem>
                 </NavLink>
               );
