@@ -122,7 +122,9 @@ var CustomCard = function CustomCard(props) {
       ),
       _react2.default.createElement(
         _Button2.default,
-        { size: 'small', color: 'primary', className: editButtonClasses, onClick: editAction },
+        { size: 'small', color: 'primary', className: editButtonClasses, onClick: function onClick() {
+            return editAction(props);
+          } },
         'Edit'
       )
     )
