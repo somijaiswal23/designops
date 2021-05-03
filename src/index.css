@@ -28,3 +28,12 @@ code {
   font-family: Montserrat, sans-serif;
   font-weight: 500;
 }
+
+.codeDiv {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  overflow: auto;
+  max-width: 1024px;
+  margin: auto;
+}

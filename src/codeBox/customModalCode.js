@@ -1,10 +1,9 @@
-/*****Import use for example purpose only */
+const customModalCode = `
 import React from "react";
 import './index.css'
 import {Button,Grid,Typography, Container, TextField, Box} from '@material-ui/core';
-/*****Import use for example purpose only */
-import { CustomModal } from "../../lib";
-import {CodeSnippet, customModalCode} from '../../codeBox';
+
+import { CustomModal } from "../node_modules/designops/dist/index.js";
 
 const CustomModalDemo = () => {
     const [openModal1, setOpenModalOne] = React.useState(false);
@@ -103,7 +102,6 @@ const CustomModalDemo = () => {
     </CustomModal>
     </Grid>
     </Box>
-    <CodeSnippet code={customModalCode}/>
     </Container>
 
     
@@ -111,3 +109,12 @@ const CustomModalDemo = () => {
 }
 
 export default CustomModalDemo;
+
+
+/***********index.css***********/
+.buttonCss{
+  color:black !important;
+}
+`
+
+export default customModalCode;

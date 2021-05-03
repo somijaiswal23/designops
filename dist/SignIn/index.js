@@ -60,7 +60,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
     root: {
-      height: '100vh'
+      height: '50vh',
+      width: '80%',
+      margin: 'auto'
     },
     image: {
       backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -89,7 +91,9 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
   };
 });
 
-function SignInSide() {
+function SignInSide(_ref) {
+  var firstLabel = _ref.firstLabel;
+
   var classes = useStyles();
 
   return _react2.default.createElement(
@@ -122,7 +126,7 @@ function SignInSide() {
             required: true,
             fullWidth: true,
             id: 'email',
-            label: 'Email Address',
+            label: firstLabel ? firstLabel : "Email Address",
             name: 'email',
             autoComplete: 'email',
             autoFocus: true

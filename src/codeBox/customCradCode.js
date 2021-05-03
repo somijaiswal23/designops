@@ -1,12 +1,10 @@
-import React from 'react';
+const customCardCode = `import React from 'react';
 import './index.css';
-import {CustomCard} from "../../lib";
-import {CustomModal} from "../../lib";
+import {CustomCard, CustomModal} from "../node_modules/designops/dist/index.js";
 import { useState } from 'react';
 import {TextField} from '@material-ui/core';
-import {IMAGE} from '../Constants';
-import {CodeSnippet, customCardCode} from '../../codeBox';
 
+const IMAGE = "https://images.unsplash.com/photo-1617665146086-14d150bd34fc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;ixlib=rb-1.2.1&amp;auto=format&amp;fit=crop&amp;w=1000&amp;q=80";
 const CustomCardDemo = () => {
   const [openModal, setOpenModal] = useState(false);
   const [modalHeader, setModalHeader] = useState('Heading');
@@ -41,8 +39,8 @@ const CustomCardDemo = () => {
       <CustomCard 
         viewAction={viewAction} 
         editAction={editAction}
-        cardHeading={`Heading ${i}`}
-        cardSubHeading={`I am a Card ${i}`}
+        cardHeading={\`Heading \${i}\`}
+        cardSubHeading={\`I am a Card \${i}\`}
         img={IMAGE}
         cardClasses='cardClass'/>);
     }
@@ -68,14 +66,35 @@ const CustomCardDemo = () => {
         title={modalHeader}>
         <p>{subHeader}</p>
         {isEdit && <form>
-          <TextField id="outlined-basic" label="Heading" variant="outlined" type="text" fullWidth onChange={headingHandler}/>
-          <TextField id="outlined-basic" label="SubHeading" variant="outlined" type="text" fullWidth/>
+          <TextField id="outlined-basic" 
+          label="Heading" variant="outlined" 
+          type="text" fullWidth 
+          onChange={headingHandler}/>
+          <TextField id="outlined-basic"
+           label="SubHeading" variant="outlined" 
+           type="text" fullWidth/>
         </form>}
       </CustomModal>
-      <CodeSnippet code={customCardCode}/>
     </div>
   );
 }
 
 export default CustomCardDemo;
 
+/*************index.css*************/
+
+.cardClass {
+  height: 30%;
+  width: 30%;
+  margin: 10px;
+}
+
+.container {
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+
+`
+export default customCardCode;

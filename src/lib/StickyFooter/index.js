@@ -5,15 +5,14 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Link from '@material-ui/core/Link';
 
-function Copyright() {
+const classNames = require('classnames');
+
+function Copyright({copyright}) {
   return (
     <Typography variant="body2" color="textSecondary">
-      {'Copyright © '}
       <Link color="inherit" href="https://www.rxpservices.com/">
-        RXP DesignOps
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+        {copyright ? copyright : 'RXP DesignOps'}
+      </Link>
     </Typography>
   );
 }
@@ -23,28 +22,33 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column'
   },
-  main: {
-    marginTop: theme.spacing(8),
-    marginBottom: theme.spacing(2)
-  },
   footer: {
     padding: theme.spacing(3, 2),
-    marginTop: 'auto',
     backgroundColor:
       theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
   },
+  left: {
+    textAlign: 'left',
+  },
+  right: {
+    textAlign: 'right',
+  },
+  center: {
+    textAlign: 'center',
+  },
 }));
 
-export default function StickyFooter() {
+export default function StickyFooter ({copyright, footerText, position='center', children}) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <footer className={classes.footer}>
-        <Container maxWidth="sm">
-          <Typography variant="body1">DesignOps Project</Typography>
-          <Copyright />
+      <footer className={classNames(classes.footer, classes[position])}>
+        <Container fullWidth>
+          <Typography variant="body1">{footerText ? footerText : 'DesignOps Project'}</Typography>
+          {children}
+          <Copyright copyright={copyright}/>
         </Container>
       </footer>
     </div>

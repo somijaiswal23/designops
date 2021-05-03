@@ -14,7 +14,9 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    height: '100vh',
+    height: '50vh',
+    width: '80%',
+    margin: 'auto',
   },
   image: {
     backgroundImage: 'url(https://source.unsplash.com/random)',
@@ -43,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignInSide() {
+export default function SignInSide({firstLabel}) {
   const classes = useStyles();
 
   return (
@@ -65,7 +67,7 @@ export default function SignInSide() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label={firstLabel ? firstLabel : "Email Address"}
               name="email"
               autoComplete="email"
               autoFocus

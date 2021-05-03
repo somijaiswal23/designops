@@ -29,19 +29,19 @@ var _Link2 = _interopRequireDefault(_Link);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function Copyright() {
+var classNames = require('classnames');
+
+function Copyright(_ref) {
+  var copyright = _ref.copyright;
+
   return _react2.default.createElement(
     _Typography2.default,
     { variant: 'body2', color: 'textSecondary' },
-    'Copyright © ',
     _react2.default.createElement(
       _Link2.default,
       { color: 'inherit', href: 'https://www.rxpservices.com/' },
-      'RXP DesignOps'
-    ),
-    ' ',
-    new Date().getFullYear(),
-    '.'
+      copyright ? copyright : 'RXP DesignOps'
+    )
   );
 }
 
@@ -51,19 +51,29 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       display: 'flex',
       flexDirection: 'column'
     },
-    main: {
-      marginTop: theme.spacing(8),
-      marginBottom: theme.spacing(2)
-    },
     footer: {
       padding: theme.spacing(3, 2),
-      marginTop: 'auto',
       backgroundColor: theme.palette.type === 'light' ? theme.palette.grey[200] : theme.palette.grey[800]
+    },
+    left: {
+      textAlign: 'left'
+    },
+    right: {
+      textAlign: 'right'
+    },
+    center: {
+      textAlign: 'center'
     }
   };
 });
 
-function StickyFooter() {
+function StickyFooter(_ref2) {
+  var copyright = _ref2.copyright,
+      footerText = _ref2.footerText,
+      _ref2$position = _ref2.position,
+      position = _ref2$position === undefined ? 'center' : _ref2$position,
+      children = _ref2.children;
+
   var classes = useStyles();
 
   return _react2.default.createElement(
@@ -72,16 +82,17 @@ function StickyFooter() {
     _react2.default.createElement(_CssBaseline2.default, null),
     _react2.default.createElement(
       'footer',
-      { className: classes.footer },
+      { className: classNames(classes.footer, classes[position]) },
       _react2.default.createElement(
         _Container2.default,
-        { maxWidth: 'sm' },
+        { fullWidth: true },
         _react2.default.createElement(
           _Typography2.default,
           { variant: 'body1' },
-          'DesignOps Project'
+          footerText ? footerText : 'DesignOps Project'
         ),
-        _react2.default.createElement(Copyright, null)
+        children,
+        _react2.default.createElement(Copyright, { copyright: copyright })
       )
     )
   );
