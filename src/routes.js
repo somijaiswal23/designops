@@ -3,7 +3,7 @@
  const ROUTES=[
     {
         path:'/',
-        name:'Colors',
+        name:'Color palette',
     },
     {
         path:'/signin',
