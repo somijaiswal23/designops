@@ -1,6 +1,6 @@
 import React from "react";
 import { Album, StickyFooter } from "./lib";
-import {CustomModalDemo} from './examples'
+import {CustomModalDemo, ColorPalette} from './examples'
 import './App.css';
 
 const App = () => (
@@ -10,6 +10,7 @@ const App = () => (
           entirely." cameraIconClasses="cameraIconClasses"/>
   <CustomModalDemo/>
   <StickyFooter/>
+  <ColorPalette/>
 </div>
 );
 

@@ -1,0 +1,22 @@
+.colorPalette table, td, th {
+    border: 1px solid rgb(179, 179, 179);
+    padding: 0;
+  }
+  
+  .colorPalette  table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1024px;
+    margin: auto;
+  }
+  
+  .colorPalette td {
+    text-align: center;
+  }
+  .colorPalette .box{
+    height: 40px;
+    width: 100%;
+  }
+  .colorPalette tr>th{
+    height: 50px;
+  }
